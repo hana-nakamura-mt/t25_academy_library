@@ -106,7 +106,7 @@ public class BookController {
 
             //一つでもエラーがあればエラー扱いにする
             if (errTitleFlg || errIsbnFlg){
-                throw new Exception("Account already exists.");
+                throw new Exception("ISBNの入力内容に誤りがあります。");
             }
 
             bookMstService.save(bookMstDto); 

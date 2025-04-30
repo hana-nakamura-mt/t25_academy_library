@@ -10,10 +10,33 @@
         <div th:replace="~{common :: main_sidebar}"></div>
         <div class="main_contents">
             <div th:replace="~{common :: header}"></div>
-            <div class="inner_contens">
+            <div class="inner_contents">
                 <div class="page_title">書籍一覧</div>
+
+                <!--右寄せの書籍登録画面への遷移ボタン-->
+                <div style="text-align: right; margin-bottom: 10px;">
+                    <form th:action="@{/book/add}" method="get">
+                        <button type="submit">書籍登録</button>
+                    </form>
+                </div>
+
+                <!--書籍一覧テーブル-->
+                <div>
+                    <table border ="1">
+                        <tr>
+                            <th>書籍名</th>
+                            <th>ISBN</th>
+                        </tr>
+                        <tr th:each="book : ${bookMstList}">
+                            <td th:text="${book.title}"></td>
+                            <td th:text="${book.isbn}"></td>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
+
     <div th:replace="~{common :: footer}"></div>
 </body>

@@ -45,12 +45,12 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute AccountDto accountDto, BindingResult result, RedirectAttributes ra) {
-        try {
-
-            boolean errEmailFlg = false;
-            boolean errEmpIdFlg = false;
-            Account emailExist = this.accountService.selectByEmail(accountDto.getEmail());
-            Account employeeExist = this.accountService.selectByEmployeeId(accountDto.getEmployeeId());
+        
+    try {
+        boolean errEmailFlg = false;
+        boolean errEmpIdFlg = false;
+        Account emailExist = this.accountService.selectByEmail(accountDto.getEmail());
+        Account employeeExist = this.accountService.selectByEmployeeId(accountDto.getEmployeeId());
 
             if(emailExist != null){
                 result.rejectValue("email", "error.value", "登録済みのメールアドレスです");
