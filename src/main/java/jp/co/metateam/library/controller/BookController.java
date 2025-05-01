@@ -74,25 +74,19 @@ public class BookController {
             }
 
             //isbn必須チェック（null）
-            if (isbn == null) {
-                result.rejectValue("isbn","error.value","ISBNは必須です");
-                errIsbnFlg = true;
-            }
-            
-            //isbn必須チェック（空値）
-            if (isbn.trim().isEmpty()){
+            if(isbn == null || isbn.trim().isEmpty()){
                 result.rejectValue("isbn","error.value","ISBNは必須です");
                 errIsbnFlg = true;
             }
 
             //isbn文字種チェック
-            else if(!isbn.matches("\\d+")){
+            if(!isbn.matches("\\d+")){
                 result.rejectValue("isbn","error.numeric","ISBNは半角数字で入力してください");
                 errIsbnFlg = true;
             }
 
             //isbn桁数チェック
-            else if(isbn.length() !=13){
+            if(isbn.length() !=13){
                 result.rejectValue("isbn","error.length","ISBNは13桁で入力してください");
                 errIsbnFlg = true;
             }

@@ -16,34 +16,46 @@
                 <div class="page_title">書籍登録</div>
                 <div class="page_contents">
                     <form id="book_register_form" th:object="${bookMstDto}" th:action="@{/book/add}" method="post">
-                        <div class="mb30 flexarea">
+                        <!-- 必須項目 -->
+                        <div>
+                            <span style="color: red; font-size: 15px;">＊は必須項目です。</span>
+                        </div>
+                        
+                        <!-- 一覧へ戻る -->
+                        <div class="mb30 flexarea" style="display: flex; justify-content: flex-end;">
                             <span>
-                                <a th:href="@{/book/index}" class="link"> ← 一覧へ戻る</a>
+                                <a th:href="@{/book/index}" class="link" style="font-size: 15px;"> ← 一覧へ戻る</a>
                             </span>
                         </div>
+                        
+                        <!-- 書籍一覧テーブル -->
                         <table>
-                            <caption></caption>
                             <tbody>
-                                <div>
-                                    <span style="color: red;">＊は必須項目です。</span></th>
-                                </div>
-                                <tr>
-                                    <th scope="col">書籍名<span style="color: red;">*</span></th>
+                                
+                                <!-- 書籍名行 -->
+                                <tr style="display: block; width: 100%;">
+                                    <th scope="col" style="text-align: left; display: block; font-size: 14px;">書籍名<span style="color: red; font-size: 14px;">*</span></th>
                                     <td>
-                                        <input type="text" placeholder="書籍名を入力" th:field="*{title}" required />
-                                        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red;"></div>
+                                        <input type="text" placeholder="書籍名を入力" th:field="*{title}" required style="display: block; margin-top: 5px; width: 300px; padding: 8px;" />
+                                        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red; margin-top: 5px;"></div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="col">ISBN<span style="color: red;">*</span></th>
+                                
+                                <!-- ISBN行 -->
+                                <tr style="display: block; width: 100%;">
+                                    <th scope="col" style="text-align: left; display: block; font-size: 14px;">ISBN<span style="color: red; font-size: 14px;">*</span></th>
                                     <td>
-                                        <input type="text" placeholder="ISBNを入力" th:field="*{isbn}" required />
-                                        <div th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" style="color: red;"></div>
+                                        <input type="text" placeholder="ISBNを入力" th:field="*{isbn}" required style="display: block; margin-top: 5px; width: 300px; padding: 8px;" />
+                                        <div th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" style="color: red; margin-top: 5px;"></div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit">保存</button>
+                        
+                        <!-- 保存ボタン -->
+                        <button type="submit" style="background-color: #94ec97; color: black; padding: 10px 30px; border: none; border-radius: 5px; cursor: pointer; display: block; margin: 30px auto 0;">
+                            保存
+                        </button>
                     </form>
                 </div>
             </div>
